@@ -1,6 +1,12 @@
 public class javabasics{
     public static void main(String args[])
     {
+
+        int num1=10;
+        int num2=15;
+        System.out.println("Add:"+(num1+num2));
+        System.out.println("Modulus:"+(num1%num2));//Arithmetic Operation(+,-,*,/,%)
+
         int a=10;
         int b=++a; //pre-increment
         System.out.println("a="+a);
