@@ -1,0 +1,12 @@
+Account Number: 101
+Account Name: Janu
+Transaction: Deposit
+Amount: 100.0
+Current Balance: 10100.0
+--------------------------------
+Account Number: 101
+Account Name: Janu
+Transaction: Withdrawal
+Amount: 50.0
+Current Balance: 10050.0
+--------------------------------
