@@ -10,3 +10,35 @@ Transaction: Withdrawal
 Amount: 50.0
 Current Balance: 10050.0
 --------------------------------
+
+===== Transaction =====
+Account Number : 102
+Account Name   : Jyothi
+Transaction    : Deposit
+Amount         : 5000.0
+Current Balance: 55000.0
+========================
+
+===== Transaction =====
+Account Number : 102
+Account Name   : Jyothi
+Transaction    : Withdrawal
+Amount         : 100.0
+Current Balance: 54900.0
+========================
+
+===== Transaction =====
+Account Number : 103
+Account Name   : Manju
+Transaction    : Deposit
+Amount         : 100.0
+Current Balance: 25100.0
+========================
+
+===== Transaction =====
+Account Number : 103
+Account Name   : Manju
+Transaction    : Deposit
+Amount         : 100.0
+Current Balance: 25200.0
+========================

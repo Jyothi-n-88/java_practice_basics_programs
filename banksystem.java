@@ -65,27 +65,53 @@ class bank {
     // File writing method
     void writeToFile(String transaction, double amount) {
 
-        try {
+    try {
 
-            FileWriter fw = new FileWriter("bankdetails.txt", true);
+        FileWriter fw = new FileWriter("bankdetails.txt", true);
 
-            fw.write("Account Number: " + acc_no + "\n");
-            fw.write("Account Name: " + acc_name + "\n");
-            fw.write("Transaction: " + transaction + "\n");
-            fw.write("Amount: " + amount + "\n");
-            fw.write("Current Balance: " + balance + "\n");
-            fw.write("--------------------------------\n");
+        fw.write("\n===== Transaction =====\n");
+        fw.write("Account Number : " + acc_no + "\n");
+        fw.write("Account Name   : " + acc_name + "\n");
+        fw.write("Transaction    : " + transaction + "\n");
+        fw.write("Amount         : " + amount + "\n");
+        fw.write("Current Balance: " + balance + "\n");
+        fw.write("========================\n");
 
-            fw.close();
+        fw.close();
 
-            System.out.println("Transaction details saved to file.");
+        System.out.println("Transaction details saved to file.");
 
-        }
-        catch (IOException e) {
-
-            System.out.println("Error while writing to file.");
-        }
+    } 
+    catch (IOException e) {
+        System.out.println("Error while writing to file.");
     }
+}
+
+void readFromFile() {
+
+    try {
+
+        FileReader fr = new FileReader("bankdetails.txt");
+        Scanner file = new Scanner(fr);
+
+        while (file.hasNextLine()) {
+            System.out.println(file.nextLine());
+        }
+
+        file.close();
+        fr.close();
+
+    }
+    catch (FileNotFoundException e) {
+        System.out.println("File not found.");
+    }
+    catch (IOException e) {
+        System.out.println("Error while reading the file.");
+    }
+}
+    
+
+
 }
 
 public class banksystem {
@@ -94,87 +120,79 @@ public class banksystem {
 
         Scanner sc = new Scanner(System.in);
 
-        bank obj = new bank(
-            101,
-            "Janu",
-            10000,
-            123456
-        );
+        // Multiple accounts
+        bank[] accounts = new bank[3];
+
+        accounts[0] = new bank(101, "Janu", 10000, 123456);
+        accounts[1] = new bank(102, "Jyothi", 50000, 78910);
+        accounts[2] = new bank(103, "Manju", 25000, 11111);
 
         System.out.println("Enter your PIN:");
-
         int userpin = sc.nextInt();
 
-        // Authentication
-        try {
+        bank currentUser = null;
 
-            obj.checkPin(userpin);
-
+        // Find account with matching PIN
+        for (int i = 0; i < accounts.length; i++) {
+            try {
+                accounts[i].checkPin(userpin);
+                currentUser = accounts[i];
+                break;
+            } catch (InvalidPinException e) {
+                // Ignore and check next account
+            }
         }
-        catch (InvalidPinException e) {
 
-            System.out.println(e.getMessage());
+        // If PIN doesn't match any account
+        if (currentUser == null) {
+            System.out.println("Invalid PIN");
             System.out.println("Access denied.");
-
+            sc.close();
             return;
         }
+
+        System.out.println("Login Successful!");
 
         while (true) {
 
             System.out.println("\n1. Deposit Amount");
             System.out.println("2. Withdraw Amount");
             System.out.println("3. Check Balance");
-            System.out.println("4. Exit");
+            System.out.println("4. Read Transaction History");
+            System.out.println("5. Exit");
 
-            System.out.println("Enter your choice:");
-
+            System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
 
                 case 1:
-
-                    System.out.println("Enter amount to deposit:");
-
-                    double depositAmount =
-                        sc.nextDouble();
-
-                    obj.deposit(depositAmount);
-
+                    System.out.print("Enter amount to deposit: ");
+                    double depositAmount = sc.nextDouble();
+                    currentUser.deposit(depositAmount);
                     break;
 
                 case 2:
-
-                    System.out.println("Enter amount to withdraw:");
-
-                    double withdrawAmount =
-                        sc.nextDouble();
-
-                    obj.withdraw(withdrawAmount);
-
+                    System.out.print("Enter amount to withdraw: ");
+                    double withdrawAmount = sc.nextDouble();
+                    currentUser.withdraw(withdrawAmount);
                     break;
 
                 case 3:
-
-                    obj.checkbalance();
-
+                    currentUser.checkbalance();
                     break;
 
                 case 4:
+                    currentUser.readFromFile();
+                    break;
 
-                    System.out.println(
-                        "Thank you! You are exiting."
-                    );
-
-                    sc.close();
-
-                    return;
+                case 5:
+                   System.out.println("Thank you! You are exiting.");
+                   sc.close();
+                   return;
 
                 default:
-
-                    System.out.println(
-                        "Invalid choice"
-                    );
+                    System.out.println("Invalid choice");
             }
         }
     }
