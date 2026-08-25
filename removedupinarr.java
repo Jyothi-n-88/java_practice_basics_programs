@@ -1,3 +1,4 @@
+//time complexity :O(n)
 public class removedupinarr {
     public static int removeDuplicates(int[] arr) {
 
