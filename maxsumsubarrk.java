@@ -8,16 +8,18 @@ public class maxsumsubarrk {
             currentsum+=array[i];
         }
         int maxsum=currentsum;
-
+        int lastinx=k-1;
         for(int i=k;i<array.length;i++)
         {
             currentsum=currentsum+array[i]-array[i-k];
             if(currentsum>maxsum)
             {
                 maxsum=currentsum;
+                lastinx=i;
             }
         }
         System.out.println("Max Sum: " + maxsum);
+        System.out.println("Array elements added to get max-subarray-sum are:" + array[lastinx-k+1] +":" +array[lastinx-k+2] +":" + array[lastinx]);
     }
 
     public static void main(String[] args) {
