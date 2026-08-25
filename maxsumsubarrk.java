@@ -1,3 +1,6 @@
+// Time complexity:O(n)
+//Space complexity:O(1)
+
 public class maxsumsubarrk {
 
     public static void max_sub_arrays(int array[], int k) {
