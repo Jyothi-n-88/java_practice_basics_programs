@@ -1,4 +1,6 @@
-
+//Kadane's Algorithm
+//time complexity:O(n)
+//Space complexity: O(1)
 public class maxsubarraysum3 {
     public static void max_sub_arrays(int array[]) { 
         int currentsum = 0;
