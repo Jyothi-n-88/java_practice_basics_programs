@@ -3,7 +3,7 @@
 //Time Complexity:O(n)
 //Space Complexity:O(n)
 import java.util.HashSet;
-class array_problem
+class array_problem_contains_duplicate.java
 {
     public static boolean containsDuplicate(int nums[])
     {
