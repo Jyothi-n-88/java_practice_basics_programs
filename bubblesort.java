@@ -1,3 +1,6 @@
+//Time complexity:O(n^2)
+//Space Complexity:O(1)
+
 public class bubblesort {
 
     public static void main(String[] args) {
@@ -18,3 +21,5 @@ public class bubblesort {
         }
     }
 }
+
+
