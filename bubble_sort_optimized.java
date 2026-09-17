@@ -1,3 +1,5 @@
+//Time Complexity:O(n)
+//Space Complexity:O(1)
 public class bubble_sort_optimized{
 
     public static void bubbleSort(int arr[]) {
