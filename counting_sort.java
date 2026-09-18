@@ -1,3 +1,5 @@
+//Space Complexity = O(k) :: k = largest element in the array (more precisely, the size of the value range)
+//Time Complexity = O(n + k)
 public class counting_sort {
 
     public static void countingsort(int arr[])
@@ -13,7 +15,7 @@ public class counting_sort {
             count[arr[i]]++;
         }
         int j=0;
-        for(int i=0;i<count.length;i++)
+        for(int i=count.length-1;i>=0;i--) //Descending sorting order
         {
             while(count[i]>0)
             {
@@ -29,7 +31,7 @@ public class counting_sort {
     }
     public static void main(String[] args) {
 
-        int[] arr = {1,4,1,3,2,4,3,7};
+        int[] arr = {3, 6, 2, 1, 8, 7, 4, 5, 3, 1};
         countingsort(arr);
 }
 }
