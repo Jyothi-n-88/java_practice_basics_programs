@@ -1,13 +1,13 @@
-public class InsertionSort {
+public class insertionsort {
 
     public static void main(String[] args) {
 
-        int[] arr = {5, 3, 8, 4, 2};
+        int[] arr = {5, 3, 8,10, 4, 2};
         int i, j, key;
         for (i = 1; i < arr.length; i++) {
             key = arr[i];
             j = i - 1;
-            while (j >= 0 && arr[j] > key) {
+            while (j >= 0 && arr[j] < key) { //descending order (for ascending order:arr[j]>key)
 
                 arr[j + 1] = arr[j];
                 j--;
