@@ -1,4 +1,5 @@
 //Ques: For a given set of string print largest string
+//Time Complexity:O(X x N)   X->traversing through each character of string   N->for loop traversing through all str[]
 
 class largeststring 
 {
